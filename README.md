@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este é um sistema de gerenciamento de cursos de uma escola desenvolvido com Python utilizando Django Rest Framework (DRF) para o backend e NestJS para o frontend. O sistema persiste dados em um banco de dados relacional MySQL.
+Este é um sistema de gerenciamento de cursos de uma escola desenvolvido com Python utilizando Django Rest Framework (DRF) para o backend e NextJS para o frontend. O sistema persiste dados em um banco de dados relacional MySQL.
 
 ## Tecnologias Utilizadas
 
@@ -158,6 +158,114 @@ Os endpoints da API podem ser acessados em `http://localhost:8000/api/`. Aqui es
   - `GET /api/assessments/:id/` - Detalhes de uma avaliação específica
   - `PUT /api/assessments/:id/` - Atualiza uma avaliação específica
   - `DELETE /api/assessments/:id/` - Deleta uma avaliação específica
+
+# Documentação da API
+
+## Endpoints
+
+### Courses
+
+#### GET /courses/
+- **Descrição**: Lista todos os cursos.
+- **Resposta de Sucesso**:
+  - **Código**: 200 OK
+  - **Corpo**:
+    ```json
+    [
+      {
+        "id": 1,
+        "title": "Curso de Python",
+        "url": "http://example.com/python",
+        "create": "2024-06-01T00:00:00Z",
+        "active": true
+      }
+    ]
+    ```
+
+#### POST /courses/
+- **Descrição**: Cria um novo curso.
+- **Corpo da Requisição**:
+  - **Exemplo**:
+    ```json
+    {
+      "title": "Curso de Django",
+      "url": "http://example.com/django"
+    }
+    ```
+- **Resposta de Sucesso**:
+  - **Código**: 201 Created
+  - **Corpo**:
+    ```json
+    {
+      "id": 2,
+      "title": "Curso de Django",
+      "url": "http://example.com/django",
+      "create": "2024-06-01T00:00:00Z",
+      "active": true
+    }
+    ```
+
+#### DELETE /courses/{id}/
+- **Descrição**: Deleta um curso pelo ID.
+- **Resposta de Sucesso**:
+  - **Código**: 204 No Content
+
+### Assessments
+
+#### GET /assessments/
+- **Descrição**: Lista todas as avaliações.
+- **Resposta de Sucesso**:
+  - **Código**: 200 OK
+  - **Corpo**:
+    ```json
+    [
+      {
+        "id": 1,
+        "course": 1,
+        "name": "Robson",
+        "email": "robson@example.com",
+        "comment": "Ótimo curso!",
+        "assessment": 5.0,
+        "create": "2024-06-01T00:00:00Z",
+        "active": true
+      }
+    ]
+    ```
+
+#### POST /assessments/
+- **Descrição**: Cria uma nova avaliação.
+- **Corpo da Requisição**:
+  - **Exemplo**:
+    ```json
+    {
+      "course": 1,
+      "name": "Maria",
+      "email": "maria@example.com",
+      "comment": "Muito bom!",
+      "assessment": 4.5
+    }
+    ```
+- **Resposta de Sucesso**:
+  - **Código**: 201 Created
+  - **Corpo**:
+    ```json
+    {
+      "id": 2,
+      "course": 1,
+      "name": "Maria",
+      "email": "maria@example.com",
+      "comment": "Muito bom!",
+      "assessment": 4.5,
+      "create": "2024-06-01T00:00:00Z",
+      "active": true
+    }
+    ```
+
+#### DELETE /assessments/{id}/
+- **Descrição**: Deleta uma avaliação pelo ID.
+- **Resposta de Sucesso**:
+  - **Código**: 204 No Content
+
 
 ### Interface de Administração (Django Admin)
 
