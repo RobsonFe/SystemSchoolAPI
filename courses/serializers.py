@@ -13,6 +13,7 @@ class AssessmentSerializer(serializers.ModelSerializer):
             'name',
             'email',
             'comment',
+            'assessment',
             'create',
             'active'
         )
